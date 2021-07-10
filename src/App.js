@@ -7,7 +7,7 @@ import Header from './components/Header';
 const App = () => {
   return (
     <>
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <Header />
       </SafeAreaView>
       <StatusBar backgroundColor={Colors.blue} barStyle="light-content" />
@@ -20,5 +20,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Colors.whiteCultured,
   },
 });

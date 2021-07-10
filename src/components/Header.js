@@ -14,11 +14,15 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 3,
+    borderBottomColor: '#31525E',
     backgroundColor: Colors.blue,
   },
   text: {
-    fontSize: 18,
-    fontFamily: 'Roboto-Bold',
+    color: Colors.white,
+    fontSize: 22,
+    fontFamily: 'Poppins-Bold',
   },
 });
