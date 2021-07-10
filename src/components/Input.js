@@ -14,11 +14,19 @@ const Input = () => {
       <TextInput
         style={styles.input}
         placeholder="Maria, João, Carla, Samuel, Julia, ..."
-        placeholderTextColor={Colors.white}
+        placeholderTextColor="gray"
       />
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.text}>Add</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.text}>ADICIONAR</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.text}>ORDENAR</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.text}>SORTEAR</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -28,31 +36,27 @@ export default Input;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 50,
     marginVertical: 16,
-    flexDirection: 'row',
-    backgroundColor: '#4D8093',
-    justifyContent: 'space-evenly',
+    paddingHorizontal: 8,
   },
   input: {
-    flex: 1,
     fontSize: 18,
-    color: Colors.white,
+    color: '#000',
+    borderBottomWidth: 2,
     paddingHorizontal: 16,
+    borderBottomColor: 'gray',
     textAlignVertical: 'center',
     fontFamily: 'Poppins-Regular',
   },
   button: {
-    width: 50,
-    justifyContent: 'center',
+    height: 40,
+    marginVertical: 8,
     alignItems: 'center',
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
-    backgroundColor: Colors.green,
+    justifyContent: 'center',
   },
   text: {
-    color: Colors.white,
-    fontSize: 18,
+    fontSize: 20,
+    color: 'gray',
     fontFamily: 'Roboto-Bold',
   },
 });

@@ -1,13 +1,8 @@
 import React from 'react';
-import {
-  View,
-  TextInput,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import Colors from '../settings/Colors';
+import IconTrash from '../assets/icons/trash.svg';
+import IconPencil from '../assets/icons/pencil.svg';
 
 const names = [
   {id: 1, name: 'João Alves'},
@@ -32,16 +27,24 @@ const ViewName = ({id, name}) => {
     <View style={styles.viewImpar}>
       <Text style={styles.textImpar}>{name}</Text>
       <View style={{flexDirection: 'row'}}>
-        <Text style={[styles.textImpar, {marginRight: 16}]}>Edit</Text>
-        <Text style={styles.textImpar}>Delete</Text>
+        <TouchableOpacity>
+          <IconPencil style={{marginRight: 24}} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <IconTrash />
+        </TouchableOpacity>
       </View>
     </View>
   ) : (
     <View style={styles.viewPar}>
       <Text style={styles.textPar}>{name}</Text>
       <View style={{flexDirection: 'row'}}>
-        <Text style={[styles.textPar, {marginRight: 16}]}>Edit</Text>
-        <Text style={styles.textPar}>Delete</Text>
+        <TouchableOpacity>
+          <IconPencil style={{marginRight: 24}} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <IconTrash />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -92,5 +95,10 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 20,
     fontFamily: 'Roboto-Medium',
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    color: '#000',
   },
 });
