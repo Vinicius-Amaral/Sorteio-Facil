@@ -27,12 +27,11 @@ export default Input;
 
 const styles = StyleSheet.create({
   container: {
-    width: '95%',
+    width: '100%',
     height: 50,
-    borderRadius: 20,
     marginVertical: 16,
     flexDirection: 'row',
-    backgroundColor: Colors.blue,
+    backgroundColor: '#4D8093',
     justifyContent: 'space-evenly',
   },
   input: {

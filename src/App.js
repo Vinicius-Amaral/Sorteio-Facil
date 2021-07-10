@@ -4,6 +4,7 @@ import {SafeAreaView, View, StyleSheet, StatusBar} from 'react-native';
 import Colors from './settings/Colors';
 import Header from './components/Header';
 import InputName from './components/Input';
+import TableNames from './components/TableNames';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <SafeAreaView style={styles.container}>
         <Header />
         <InputName />
+        <TableNames />
       </SafeAreaView>
       <StatusBar backgroundColor={Colors.blue} barStyle="light-content" />
     </>
