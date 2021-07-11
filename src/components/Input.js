@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   TextInput,
@@ -6,24 +6,32 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import Colors from '../settings/Colors';
+
+import {createUser} from '../redux/slices/userSlice';
+import {useDispatch} from 'react-redux';
 
 const Input = () => {
+  const dispatch = useDispatch();
+  const [name, setName] = useState();
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
+        onChangeText={name => setName(name)}
         placeholder="Maria, João, Carla, Samuel, Julia, ..."
         placeholderTextColor="gray"
       />
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          onPress={() => dispatch(createUser(name))}
+          style={styles.button}>
           <Text style={styles.text}>ADICIONAR</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={() => {}} style={styles.button}>
           <Text style={styles.text}>ORDENAR</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={() => {}} style={styles.button}>
           <Text style={styles.text}>SORTEAR</Text>
         </TouchableOpacity>
       </View>

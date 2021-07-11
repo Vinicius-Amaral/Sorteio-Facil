@@ -6,22 +6,16 @@ const userSlice = createSlice({
     {id: 1, name: 'João Alves'},
     {id: 2, name: 'Catarina Correa'},
     {id: 3, name: 'Anderson Sousa'},
-    {id: 4, name: 'Julio Martins'},
-    {id: 5, name: 'Ana Silva'},
-    {id: 6, name: 'Pedro Mendonça'},
-    {id: 7, name: 'Camila Paz'},
-    {id: 8, name: 'Adriano Aguiar'},
-    {id: 9, name: 'Elisangela Froes'},
-    {id: 10, name: 'Rodrigo Santos'},
-    {id: 11, name: 'Pamela Delgado'},
-    {id: 12, name: 'Lucas Garces'},
-    {id: 13, name: 'Priscila Fontenele'},
-    {id: 14, name: 'Magno Menezes'},
-    {id: 15, name: 'Juliana Gouveia'},
   ],
   reducers: {
     createUser(state, action) {
-      state.push(action.payload);
+      const names = action.payload;
+      const namesSplit = names.split(',');
+      namesSplit.forEach(name => {
+        let index = state.length;
+        const nameTrim = name.trim();
+        state.push({id: ++index, name: nameTrim});
+      });
     },
     updateUser(state, action) {},
     deleteUser(state, action) {
