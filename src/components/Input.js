@@ -12,7 +12,7 @@ import {useDispatch} from 'react-redux';
 
 const Input = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState();
+  const [name, setName] = useState('');
 
   return (
     <View style={styles.container}>
@@ -24,7 +24,7 @@ const Input = () => {
       />
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
         <TouchableOpacity
-          onPress={() => dispatch(createUser(name))}
+          onPress={() => (name.length > 0 ? dispatch(createUser(name)) : false)}
           style={styles.button}>
           <Text style={styles.text}>ADICIONAR</Text>
         </TouchableOpacity>

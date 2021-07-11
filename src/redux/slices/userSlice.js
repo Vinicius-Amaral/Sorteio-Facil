@@ -22,12 +22,15 @@ const userSlice = createSlice({
       const index = action.payload;
       state.splice(index, 1);
     },
+    deleteAll(state) {
+      for (i = 0; i <= state.length + 1; i++) state.pop();
+    },
   },
 });
 
 // Extract the action creators object and the reducer
 const {actions, reducer} = userSlice;
 // Extract and export each action creator by name
-export const {createUser, updateUser, deleteUser} = actions;
+export const {createUser, updateUser, deleteUser, deleteAll} = actions;
 // Export the reducer, either as a default or named export
 export default reducer;
