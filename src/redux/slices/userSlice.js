@@ -20,9 +20,14 @@ const userSlice = createSlice({
     {id: 15, name: 'Juliana Gouveia'},
   ],
   reducers: {
-    createUser(state, action) {},
+    createUser(state, action) {
+      state.push(action.payload);
+    },
     updateUser(state, action) {},
-    deleteUser(state, action) {},
+    deleteUser(state, action) {
+      const index = action.payload;
+      state.splice(index, 1);
+    },
   },
 });
 

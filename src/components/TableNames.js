@@ -1,5 +1,9 @@
 import React from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
+
+import {useSelector, useDispatch} from 'react-redux';
+import {createUser, updateUser, deleteUser} from '../redux/slices/userSlice';
+
 import Colors from '../settings/Colors';
 import IconTrash from '../assets/icons/trash.svg';
 import IconPencil from '../assets/icons/pencil.svg';
@@ -22,40 +26,41 @@ const names = [
   {id: 15, name: 'Juliana Gouveia'},
 ];
 
-const ViewName = ({id, name}) => {
-  return id % 2 === 1 ? (
-    <View style={styles.viewImpar}>
-      <Text style={styles.textImpar}>{name}</Text>
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity>
-          <IconPencil style={{marginRight: 24}} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <IconTrash />
-        </TouchableOpacity>
-      </View>
+const ViewName = ({index, name, atualizar, excluir}) => (
+  <View style={index % 2 === 0 ? styles.viewImpar : styles.viewPar}>
+    <Text style={index % 2 === 0 ? styles.textImpar : styles.textPar}>
+      {name}
+    </Text>
+    <View style={{flexDirection: 'row'}}>
+      <TouchableOpacity onPress={() => atualizar(index)}>
+        <IconPencil style={{marginRight: 24}} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => excluir(index)}>
+        <IconTrash />
+      </TouchableOpacity>
     </View>
-  ) : (
-    <View style={styles.viewPar}>
-      <Text style={styles.textPar}>{name}</Text>
-      <View style={{flexDirection: 'row'}}>
-        <TouchableOpacity>
-          <IconPencil style={{marginRight: 24}} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <IconTrash />
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
+  </View>
+);
 
 const TableNames = () => {
+  const users = useSelector(state => state.users);
+  const dispatch = useDispatch();
+
+  const atualizar = index => dispatch(updateUser(index));
+  const excluir = index => dispatch(deleteUser(index));
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={names}
-        renderItem={({item}) => <ViewName id={item.id} name={item.name} />}
+        data={users}
+        renderItem={({item, index}) => (
+          <ViewName
+            index={index}
+            name={item.name}
+            atualizar={atualizar}
+            excluir={excluir}
+          />
+        )}
       />
     </View>
   );
