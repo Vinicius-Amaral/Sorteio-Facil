@@ -1,20 +1,29 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
 import {useDispatch} from 'react-redux';
-import {deleteAll} from '../redux/slices/userSlice';
+import {deleteAll, order} from '../redux/slices/userSlice';
 
 import Colors from '../settings/Colors';
 import IconDelete from '../assets/icons/delete.svg';
+import IconArrow from '../assets/icons/arrow.png';
 
 const Header = () => {
   const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <Text style={styles.text}>SORTEIO FÁCIL</Text>
-      <TouchableOpacity onPress={() => dispatch(deleteAll())}>
-        <IconDelete />
-      </TouchableOpacity>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <TouchableOpacity onPress={() => dispatch(order())}>
+          <Image
+            source={IconArrow}
+            style={{width: 30, height: 30, marginRight: 16}}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => dispatch(deleteAll())}>
+          <IconDelete />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

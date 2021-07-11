@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import Colors from '../settings/Colors';
 import {createUser} from '../redux/slices/userSlice';
 import {useDispatch} from 'react-redux';
 
@@ -27,12 +28,6 @@ const Input = () => {
           onPress={() => (name.length > 0 ? dispatch(createUser(name)) : false)}
           style={styles.button}>
           <Text style={styles.text}>ADICIONAR</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}} style={styles.button}>
-          <Text style={styles.text}>ORDENAR</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}} style={styles.button}>
-          <Text style={styles.text}>SORTEAR</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -57,14 +52,17 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
   button: {
+    width: '100%',
     height: 40,
     marginVertical: 8,
+    backgroundColor: Colors.green,
+    borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     fontSize: 20,
-    color: 'gray',
+    color: 'white',
     fontFamily: 'Roboto-Bold',
   },
 });
