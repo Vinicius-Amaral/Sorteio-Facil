@@ -49,9 +49,16 @@ const TableNames = () => {
   const atualizar = index => dispatch(updateUser(index));
   const excluir = index => dispatch(deleteUser(index));
 
+  const sortearNome = () => {
+    console.warn('AGUARDE...');
+    setTimeout(() => console.warn('SORTEADO!'), 2000);
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
+        refreshing={false}
+        onRefresh={() => sortearNome()}
         data={users}
         renderItem={({item, index}) => (
           <ViewName

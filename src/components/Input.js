@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    height: 40,
     marginVertical: 8,
+    paddingVertical: 10,
     backgroundColor: Colors.green,
     borderRadius: 100,
     alignItems: 'center',

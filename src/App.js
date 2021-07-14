@@ -1,21 +1,31 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
+  View,
+  Text,
+  Button,
   TouchableOpacity,
   StyleSheet,
   StatusBar,
 } from 'react-native';
+import Modal from 'react-native-modal';
 import {useSelector} from 'react-redux';
 
 import Colors from './settings/Colors';
 import Header from './components/Header';
+import ModalAdd from './components/modalAdd';
 import InputName from './components/Input';
 import TableNames from './components/TableNames';
-import IconSpin from './assets/icons/spin.svg';
+import IconAdd from './assets/icons/add.svg';
 
 const App = () => {
   const state = useSelector(state => state.users);
+  const [modalVisible, setModalVisible] = useState(false);
   const [nameSorted, setNameSorted] = useState('');
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
+
   const sort = () => {
     const index = Math.floor(Math.random() * (state.length - 1 + 1)) + 1;
 
@@ -33,11 +43,25 @@ const App = () => {
     <>
       <SafeAreaView style={styles.container}>
         <Header />
-        <InputName />
         <TableNames />
-        <TouchableOpacity onPress={() => sort()} style={styles.button}>
-          <IconSpin />
+        <TouchableOpacity
+          onPress={() => setModalVisible(!modalVisible)}
+          style={styles.button}>
+          <IconAdd />
         </TouchableOpacity>
+        <Modal
+          animationIn="fadeInUpBig"
+          animationOut="fadeOutDownBig"
+          animationInTiming={1700}
+          animationOutTiming={1700}
+          onBackdropPress={() => setModalVisible(!modalVisible)}
+          isVisible={modalVisible}
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <ModalAdd />
+        </Modal>
       </SafeAreaView>
       <StatusBar backgroundColor={Colors.blue} barStyle="light-content" />
     </>
