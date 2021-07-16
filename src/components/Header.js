@@ -6,22 +6,25 @@ import {deleteAll, order} from '../redux/slices/userSlice';
 
 import Colors from '../settings/Colors';
 import IconDelete from '../assets/icons/delete.svg';
-import IconArrow from '../assets/icons/arrow.png';
+import IconArrow from '../assets/icons/arrow.svg';
+import IconAdd from '../assets/icons/add.svg';
 
-const Header = () => {
+const Header = ({showModal}) => {
   const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <Text style={styles.text}>SORTEIO FÁCIL</Text>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <TouchableOpacity onPress={() => dispatch(order())}>
-          <Image
-            source={IconArrow}
-            style={{width: 30, height: 30, marginRight: 16}}
-          />
+          <IconArrow style={{marginRight: 20}} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => dispatch(deleteAll())}>
+        <TouchableOpacity
+          onPress={() => dispatch(deleteAll())}
+          style={{marginRight: 16}}>
           <IconDelete />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => showModal()} style={styles.buttonAdd}>
+          <IconAdd />
         </TouchableOpacity>
       </View>
     </View>
@@ -38,6 +41,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 3,
     paddingHorizontal: 16,
+    paddingVertical: 8,
     backgroundColor: Colors.blue,
     borderBottomColor: '#31525E',
   },

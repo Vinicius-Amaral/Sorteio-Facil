@@ -1,0 +1,18 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+ <title/>
+
+ <desc/>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke-linejoin="round" stroke-linecap="round" id="Action-/-26---Action,-bin,-delete,-all,-bin,-garbage,-remove,-trash-icon" fill-rule="evenodd" fill="none">
+   <path stroke-width="2" stroke="#ffffff" id="Path" d="m16.5,22.5l-12,0c-1.10457,0 -2,-0.89543 -2,-2l0,-12.75l16,0"/>
+   <path stroke-width="2" stroke="#ffffff" id="Path" d="m1.5,4l5,0l0.70498,-1.85522c0.1475,-0.38816 0.51954,-0.64478 0.93479,-0.64478l4.72046,0c0.41525,0 0.78729,0.25662 0.93479,0.64478l0.70498,1.85522l5,0"/>
+   <line y2="12.6" y1="12.6" x2="22" x1="13" stroke-width="2" stroke="#ffffff" id="Path"/>
+   <line y2="17.6" y1="17.6" x2="19" x1="13" stroke-width="2" stroke="#ffffff" id="Path"/>
+  </g>
+ </g>
+</svg>

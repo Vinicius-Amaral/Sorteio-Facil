@@ -16,13 +16,12 @@ import Header from './components/Header';
 import ModalAdd from './components/modalAdd';
 import InputName from './components/Input';
 import TableNames from './components/TableNames';
-import IconAdd from './assets/icons/add.svg';
 
 const App = () => {
   const state = useSelector(state => state.users);
   const [modalVisible, setModalVisible] = useState(false);
   const [nameSorted, setNameSorted] = useState('');
-  const toggleModal = () => {
+  const showModal = () => {
     setModalVisible(!modalVisible);
   };
 
@@ -42,25 +41,25 @@ const App = () => {
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <Header />
+        <Header showModal={showModal} />
         <TableNames />
-        <TouchableOpacity
-          onPress={() => setModalVisible(!modalVisible)}
-          style={styles.button}>
-          <IconAdd />
-        </TouchableOpacity>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.text}>SORTEAR</Text>
+          </TouchableOpacity>
+        </View>
         <Modal
-          animationIn="fadeInUpBig"
-          animationOut="fadeOutDownBig"
-          animationInTiming={1700}
-          animationOutTiming={1700}
+          animationIn="zoomIn"
+          animationOut="zoomOut"
+          animationInTiming={900}
+          animationOutTiming={900}
           onBackdropPress={() => setModalVisible(!modalVisible)}
           isVisible={modalVisible}
           style={{
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <ModalAdd />
+          <ModalAdd hideModal={setModalVisible} />
         </Modal>
       </SafeAreaView>
       <StatusBar backgroundColor={Colors.blue} barStyle="light-content" />
@@ -77,14 +76,22 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.whiteCultured,
   },
   button: {
-    position: 'absolute',
-    bottom: 16,
-    right: 16,
-    width: 70,
-    height: 70,
-    borderRadius: 100,
+    flex: 1,
+    paddingVertical: 16,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.blue,
+  },
+  buttonAdd: {
+    width: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.blue,
+  },
+  text: {
+    letterSpacing: 10,
+    color: '#fff',
+    fontSize: 20,
+    fontFamily: 'Roboto-Bold',
   },
 });

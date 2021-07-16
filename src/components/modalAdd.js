@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import Input from './Input';
 
-export default modalAdd = () => {
+export default modalAdd = ({hideModal}) => {
   return (
     <View style={styles.container}>
-      <Input />
+      <Input hideModal={hideModal} />
     </View>
   );
 };

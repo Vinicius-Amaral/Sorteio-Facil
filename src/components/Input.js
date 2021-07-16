@@ -11,7 +11,7 @@ import Colors from '../settings/Colors';
 import {createUser} from '../redux/slices/userSlice';
 import {useDispatch} from 'react-redux';
 
-const Input = () => {
+const Input = ({hideModal}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
 
@@ -25,7 +25,11 @@ const Input = () => {
       />
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
         <TouchableOpacity
-          onPress={() => (name.length > 0 ? dispatch(createUser(name)) : false)}
+          onPress={() =>
+            name.length > 0
+              ? dispatch(createUser(name)) && hideModal(false)
+              : false
+          }
           style={styles.button}>
           <Text style={styles.text}>ADICIONAR</Text>
         </TouchableOpacity>
@@ -56,7 +60,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     paddingVertical: 10,
     backgroundColor: Colors.green,
-    borderRadius: 100,
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
